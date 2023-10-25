@@ -41,3 +41,26 @@ browser.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         });
     }
   });
+
+
+// async function getCitationCount(paper_id) {
+//     var url = "https://scholar.google.com/scholar?q=info:" + paper_id + ":scholar.google.com/&output=cite&scirp=0&hl=en";
+//     var response = await fetch(url);
+//     var text = await response.text();
+//     var parser = new DOMParser();
+//     var doc = parser.parseFromString(text, "text/html");
+//     var bibtex = doc.querySelector('a');
+//     var href = bibtex.getAttribute("href");
+//     // var response2 = await fetch(href);
+// }
+
+// document.querySelectorAll('a').forEach(function(a) {
+//     if (a.textContent === "Cite"){
+//         var parentDivA = a.parentElement.parentElement.parentElement.getAttribute("data-cid");
+//         // console.log(parentDivA);
+//         getCitationCount(parentDivA).then(function(result) {
+//             console.log(result);
+//         });
+//     }
+    
+// });
