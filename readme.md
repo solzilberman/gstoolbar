@@ -17,3 +17,7 @@ npm run build
 # Features
 - [x] Sort by citation count
 - [x] copy bibtex to clipboard
+
+# Todo
+- [ ] switch for activating features
+- [ ] improve styles
