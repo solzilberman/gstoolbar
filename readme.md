@@ -16,4 +16,4 @@ npm run build
 
 # Features
 - [x] Sort by citation count
-- [ ] copy bibtex to clipboard
+- [x] copy bibtex to clipboard
