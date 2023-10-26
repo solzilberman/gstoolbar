@@ -42,25 +42,55 @@ browser.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }
   });
 
+const banner_style = document.createElement('style');
+banner_style.textContent = `
+  .copy-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 10000;
+  }
+  .copy-banner.show {
+    opacity: 1;
+  }
+`;
+document.head.appendChild(banner_style);
 
-// async function getCitationCount(paper_id) {
-//     var url = "https://scholar.google.com/scholar?q=info:" + paper_id + ":scholar.google.com/&output=cite&scirp=0&hl=en";
-//     var response = await fetch(url);
-//     var text = await response.text();
-//     var parser = new DOMParser();
-//     var doc = parser.parseFromString(text, "text/html");
-//     var bibtex = doc.querySelector('a');
-//     var href = bibtex.getAttribute("href");
-//     // var response2 = await fetch(href);
-// }
+const banner = document.createElement('div');
+banner.className = 'copy-banner';
+banner.textContent = 'Copied!';
+document.body.appendChild(banner);
 
-// document.querySelectorAll('a').forEach(function(a) {
-//     if (a.textContent === "Cite"){
-//         var parentDivA = a.parentElement.parentElement.parentElement.getAttribute("data-cid");
-//         // console.log(parentDivA);
-//         getCitationCount(parentDivA).then(function(result) {
-//             console.log(result);
-//         });
-//     }
-    
-// });
+function showBanner() {
+  banner.classList.add('show');
+  setTimeout(() => {
+    banner.classList.remove('show');
+  }, 3000);
+}
+
+document.querySelectorAll('a').forEach(function(a) {
+    if (a.textContent === "Import into BibTeX"){
+        a.textContent = "Copy BibTeX";
+        a.addEventListener('click', async (e) => {
+            e.preventDefault(); 
+            const dataUrl = a.href; 
+            try {
+              const response = await fetch(dataUrl);
+              const data = await response.text();
+              await navigator.clipboard.writeText(data);
+              console.log('Data copied to clipboard!');
+              showBanner();
+            } catch (error) {
+              console.error('Failed to fetch data or copy to clipboard', error);
+            }
+          });
+    }
+});

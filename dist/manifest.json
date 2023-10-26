@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "gstoolbar",
   "version": "1.0",
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "<all_urls>"],
   "icons": {
     "16" : "images/icon16.png",
     "48" : "images/icon48.png",
@@ -17,7 +17,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://*.scholar.google.com/*"],
+      "matches": ["<all_urls>"],
       "js": ["scripts/content.js"]
     }
   ]
