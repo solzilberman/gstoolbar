@@ -15,9 +15,10 @@
     "onchange": "7.1.0"
   },
   "scripts": {
-    "build": "npm run build:scripts && npm run build:styles",
+    "build": "mkdir -p dist && npm run build:scripts && npm run build:styles",
     "build:scripts": "babel src/scripts --out-dir dist/scripts",
     "build:styles": "node-sass src/styles/popup.scss dist/styles/popup.css -q",
+    "build:extension": "mkdir -p dist/images && cp -R src/images/* dist/images && cp -R src/manifest.json dist/manifest.json",
     "watch": "onchange 'src/styles/*.scss' -- npm run build styles",
     "firefox": "cd dist && zip -r ../boilerplate-firefox-extension.xpi * && cd .."
   },

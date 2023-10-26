@@ -1,6 +1,4 @@
 node_modules
 *.log
-dist/styles/popup.css
-dist/scripts/popup.js
-dist/scripts/content.js
+dist/*
 *.xpi
