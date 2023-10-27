@@ -5,9 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gstoolbar</title>
     <link rel="stylesheet" href="styles/popup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <button id="sortButton">sort by citations</button>
+  <div>
+    <img src="images/icon.png" alt="logo" class="logo">
+  </div>
+    <div>
+      <div id="sort_toggle" class="idm-switch_div div-container" >
+          <p>Enable Sort</p>
+          <input type="checkbox" id="switch" class="toggle-checkbox" />
+          <label for="switch" class="toggle">
+          </label>
+        </div>
+    </div>
+      
+      
+    <div>
+        <div id="show_toggle" class="idm-switch_div div-container" >
+          <p>Enable Copy BibTex</p>
+          <input type="checkbox" id="switch" class="toggle-checkbox" />
+          <label for="switch" class="toggle"> </label>
+        </div>
+    </div>
+
     <script src="scripts/popup.js"></script>
 </body>
 </html>
